@@ -1,0 +1,127 @@
+
+.thaoPicSection {
+	padding-top: 6rem;
+	margin: auto;
+}
+
+.img-fluidCus {
+  max-width: 110%;
+  height: auto;
+}
+
+.row {
+  margin: auto;
+}
+
+/*------------------------------------*/
+/*           BUBBLE SPEECH            */
+/*------------------------------------*/
+
+.speechBubble {
+  padding: 20px;
+  position:relative;
+  text-align: center;
+  background-color: #dfe3ee ;
+  border-radius: 10px;
+  border: 8px solid;
+  border-color: #b3cde0;
+  width: 60vh;
+  padding: 15px;
+  left:-90px;
+  bottom: -90px;
+  color: #03396c;
+  font-weight: 500;
+  font-size: 1.30em;
+  line-height: 2.0;
+}
+
+.speechBubble::before {
+  content: "";
+  display: block;
+  width: 0;
+  position: absolute;
+  bottom: -30px;
+  left: 350px;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #005b96 transparent transparent #b3cde0;
+  transform: rotate(90deg);
+}
+
+/*-------------------------------------------*/
+/*   DETAIL SECTION   */
+/*-------------------------------------------*/
+
+.blurb h2 {
+  margin-top: 50px;
+  color: #ea1c2c;
+  font-weight: 100;
+  font-size: 2.5rem;
+}
+
+.blurb p {
+  color: #f498b8;
+  font-weight: 100;
+  font-size: 1.125rem;
+  line-height: 2.0;
+    margin-bottom: 50px;
+}
+
+.content {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-color: white;
+}
+
+/*------------------------------------*/
+/*   @MEDIA - responsive for mobile   */
+/*------------------------------------*/
+@media (max-width: 1200px) {
+  .speechBubble {
+    font-size: 1.2em;
+    width: 54vh;
+    bottom: -90px;
+  }
+
+  .speechBubble::before {
+    left: 300px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .speechBubble {
+    font-size: 1.02em;
+    width: 44vh;
+    bottom: -90px;
+  }
+
+  .speechBubble::before {
+    left: 300px;
+  }
+
+  .img-fluidCus {
+    max-width: 130%;
+    height: auto;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .img-fluidCus {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .blurb h2 {
+    font-weight: 100;
+    font-size: 2rem;
+  }
+
+.blurb p {
+    font-weight: 100;
+    font-size: 1.025rem;
+  }
+}
+
+
+

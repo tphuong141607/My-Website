@@ -1,0 +1,95 @@
+/*------------------------------------*/
+/*           AUDIO                    */
+/*------------------------------------*/
+#audioIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+}
+
+/*------------------------------------*/
+/*           SCAMBLE TEXT             */
+/*------------------------------------*/
+
+.dud {
+  color: #757575;
+}
+
+.scambleText{
+	padding-top: 13em;
+ 	font-weight: 100;
+	margin: auto;
+	color: white;
+}
+
+.introTextDiv {
+  margin: 4em;
+}
+
+.intro1 {
+  font-size: 3.8em;
+  font-weight: 700;
+}
+
+.intro2 {
+  padding-top: 0.8em;	
+  font-size: 1.5em;
+  color: #c4d9f5;
+  line-height: 2em;
+}
+
+/*------------------------------------*/
+/*   @MEDIA - responsive for mobile   */
+/*------------------------------------*/
+
+@media (max-width: 1000px) {
+  .intro1 {
+    font-size: 3.525em;
+    font-weight: 800;
+  }
+
+  .intro2 {
+      font-size: 1.3em;
+      font-weight: 100;
+  }
+  .scambleText {
+    padding-top: 10em;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro1{
+    font-size: 3.25em;
+    font-weight: 800;
+  }
+
+  .intro2 {
+      font-size: 1.2em;
+      font-weight: 100;
+  }
+
+  .scambleText {
+    padding-top: 8em;
+  }
+}
+
+@media (max-width: 576px) { 
+ .intro1 {
+    font-size: 2.85em;
+    font-weight: 700;  
+  }
+
+  .intro2 {
+    font-size: 1.1em;
+     font-weight: 100;
+  }
+
+  .scambleText {
+    padding-top: 7em;
+  }
+}
+
+
+
+
