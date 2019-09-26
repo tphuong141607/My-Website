@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+<link rel='stylesheet' href='/stylesheets/projects.css'>
+
+<div class='container'>
+	<div class='projectContainer'>
+		<div class="word">
+			<span>P</span>
+			<span>R</span>
+			<span>O</span>
+			<span>J</span>
+			<span>E</span>
+			<span>C</span>
+			<span>T</span>
+			<span>S</span>
+		</div>
+		<!-- <p> <a class='btn btn-primary btn-lg' href='/projects/new'>Add new project</a> </p>-->
+	</div>
+	
+	<div class='row text-center'>
+			<% projects.forEach(function(project){ %>
+			<div class='col-md-6 col-lg-4 pt-5'>
+				<div class='img-thumbnail projectInfo'>
+					<img class="img-fluid eachProject" src="<%= project.image %>">
+					<div class='mt-3'>
+						<h2><%= project.title %></h2> 
+						<p><%= project.body.substring(0, 80) %>...</p>
+					</div>
+					<div class="mask">
+						<a href='/projects/<%= project._id %>' class='hoverLink'></a>
+   						<p>Read More</p>
+    				</div>
+				</div>
+			</div>
+			<% }); %>
+	</div>
+</div>
+
+<script type="text/javascript" src="/supportingScripts/projectHeaderAnimation.js"></script>
+
+<% include ../partials/footer %>

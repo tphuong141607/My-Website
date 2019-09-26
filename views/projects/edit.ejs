@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+
+<link rel='stylesheet' href='/stylesheets/projects.css'>
+
+<div class='container'>
+	<div class='img-thumbnail'>
+		<h1>Editing: <%=project.title%></h1>
+		<form action='/projects/<%= project._id %>?_method=PUT' method='POST'>
+			<div class='form-group'>
+				<label>Title</label>
+				<input type='text' class='form-control' name='project[title]' value='<%= project.title %>'>
+			</div>
+
+			<div class='form-group'>
+				<label>Image</label>
+				<input type='text' class='form-control' name='project[image]' value='<%= project.image %>'>
+			</div>
+
+			<div class='form-group'>
+				<label>Source Code Link</label>
+				<input type='text' class='form-control' name='project[github]' value='<%= project.github %>'>
+			</div>
+
+			<div class='form-group field'>
+				<label>Description</label>
+				<textarea type='text'rows='9' class='form-control' name='project[body]'><%= project.body %></textarea>
+			</div>
+
+			<div class='form-group'>
+				<label>Description</label>
+				<input type='text' class='form-control' name='project[toolUsed]' value='<%= project.toolUsed %>'>
+			</div>
+
+			<div class='form-group'>
+				<label>When was the projecte created?</label>
+				<input type='Date' class='form-control' name='project[dateCreated]' value='<%= project.dateCreated %>'>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</div>
+
+<% include ../partials/footer %>
+

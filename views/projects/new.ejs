@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+<link rel='stylesheet' href='/stylesheets/projects.css'>
+
+<div class='container'>
+	<form action='/projects' method='POST'>
+		<div class='form-group'>
+			<label>Title</label>
+			<input type='text' class='form-control' name='project[title]' placeholder='title'>
+		</div>
+
+		<div class='form-group'>
+			<label>Image</label>
+			<input type='text' class='form-control' name='project[image]' placeholder='image'>
+		</div>
+
+		<div class='form-group'>
+			<label>Source Code Link</label>
+			<input type='text' class='form-control' name='project[github]' placeholder='Github link'>
+		</div>
+
+		<div class='form-group field'>
+			<label>Description</label>
+			<textarea type='text'rows='9' class='form-control' name='project[body]' placeholder='description'></textarea>
+		</div>
+
+		<div class='form-group'>
+			<label>Description</label>
+			<input type='text' class='form-control' name='project[toolUsed]' placeholder='what technologies/languages used'>
+		</div>
+
+		<div class='form-group'>
+			<label>When was the projecte created?</label>
+			<input type='Date' class='form-control' name='project[dateCreated]' placeholder='date created'>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+<% include ../partials/footer %>
+
