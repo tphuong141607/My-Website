@@ -14,12 +14,10 @@
 /*---------------------------*/
 .projectInfo {
 	position: relative;
-	background: #3494E6;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to bottom, #ff9ef2, #ccecff);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to bottom, #ff9ef2, #ccecff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	border: 1px solid #088f9c;
+	background: #ebf4f6; /* fallback for old browsers */
+	
 	color: #02142b;
-	 transition: transform .2s; /* Animation */
+	transition: transform .2s; /* Animation */
 }
 
 .projectInfo h2{
@@ -51,9 +49,10 @@
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-	background: #614385;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to top, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to top, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #ff6e7f;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #215596, #ff96a2);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #215596, #ff96a2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	
 }
 
 .mask p { 

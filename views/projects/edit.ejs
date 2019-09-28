@@ -1,12 +1,13 @@
 <% include ../partials/header %>
 
 <link rel='stylesheet' href='/stylesheets/projects.css'>
-
+<link rel='stylesheet' href='/stylesheets/form.css'>
+	
 <div class='container'>
-	<div class='img-thumbnail'>
-		<h1>Editing: <%=project.title%></h1>
-		<form action='/projects/<%= project._id %>?_method=PUT' method='POST'>
-			<div class='form-group'>
+	<div class='form-group'>
+		<form class='formDiv' action='/projects/<%= project._id %>?_method=PUT' method='POST'>
+			<h1>Editing: <%=project.title%></h1>
+			<div class='form-group pt-2'>
 				<label>Title</label>
 				<input type='text' class='form-control' name='project[title]' value='<%= project.title %>'>
 			</div>
@@ -33,12 +34,14 @@
 
 			<div class='form-group'>
 				<label>When was the projecte created?</label>
-				<input type='Date' class='form-control' name='project[dateCreated]' value='<%= project.dateCreated %>'>
+				<input type='Date' class='form-control' name='project[dateCreated]' value='<%=project.dateCreated.getFullYear()%>-<%= (project.dateCreated.getMonth() < 9 ? '0': '') + (project.dateCreated.getMonth()+1)%>-<%= (project.dateCreated.getDate() < 9 ? '0': '') + (project.dateCreated.getDate())%>'>
+				
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
 </div>
+
 
 <% include ../partials/footer %>
 

@@ -1,0 +1,82 @@
+.container {
+	padding-top: 13em;
+	padding-bottom: 13em;
+}
+
+.card {
+	padding-bottom: 3rem;
+	border: 4px solid #8874a3;
+}
+.card-header {
+	padding-top: 1.8rem; 
+	background: #fffafa;
+	vertical-align: middle;
+}
+
+.card-title a {
+	font-size: 4rem;
+	background: #ff6e7f;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #215596, #ff6e7f);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #215596, #ff6e7f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-background-clip: text;
+ 	-webkit-text-fill-color: transparent;
+}
+
+.card-title i {
+	color: #215596;
+	font-size: 3.5rem;
+}
+
+.card-body {
+	margin: 2rem;
+	font-size: 1.15rem;
+	color: #313b4a;
+}
+
+.card-body h4 {
+	background: #ff6e7f;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #215596, #ff6e7f);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #0d3a70, #ffa1ac); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	color:#ffeceb;
+	opacity: 0.9;
+}
+
+.img-responsive {
+	width: 60%;
+	height: auto;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+.btnLink {
+  border-radius: 5px;
+  color: aliceblue;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.btnLink:hover {
+	cursor: pointer;
+	text-decoration: none;
+	color: aliceblue;
+}
+
+.buttonShow {
+  border-radius: 1rem;
+  transition: all 0.5s cubic-bezier(0.65, -0.25, 0.25, 1.95);
+  font-weight: 700;
+  color: aliceblue;
+  padding: 1rem 2rem;
+  background: #3e4c7a;  /* fallback for old browsers */
+}
+
+.buttonShow:hover, .buttonShow:focus, .buttonShow:active {
+  letter-spacing: 0.125rem;
+  cursor: pointer;
+}

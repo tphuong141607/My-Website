@@ -2,6 +2,9 @@ var express 	= require('express'),
 	app 		= express(),
 	methodOverride = require('method-override'), 
 	bodyParser  = require('body-parser'),
+	passport 	= require('passport'),
+	LocalStrategy = require('passport-local'),
+	User 		= rename('./models/user),
 	mongoose 	= require('mongoose');
 
 app.use(bodyParser.urlencoded({extended: true}));

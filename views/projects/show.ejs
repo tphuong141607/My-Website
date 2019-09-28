@@ -1,24 +1,35 @@
 <% include ../partials/header %>
-<link rel='stylesheet' href='/stylesheets/projects.css'>
+<link rel='stylesheet' href='/stylesheets/projectShow.css'>
 
 <div class='container'>
-	<div class='row'>
-		<div class='col-md-9'>
-			<div class='img-thumbnail'>
-				<img class='img-responsive' src='<%= project.image %>'>
-				<div class='caption'>
-					<h4><a href='#'><%= project.title %></a></h4>
-					<span><%= project.dateCreated.toDateString() %> </span>
-					<p> <%- project.body %> </p>
-				</div>
+		<div class="card">
+			 <div class="card-header text-center"> 
+				 <h1 class="card-title"><i class="fas fa-file-code"></i>  <a href='#'><%= project.title %></a></h1>				
+			  </div>
+			  	  
+			  <div class="card-body">
+			  		<h4><i class="fas fa-glasses py-2"></i> ABOUT <%= project.title %></h4>
+					<p class="card-text"> <%- project.body %></p>
+					<p><strong>Technologies, tools, languages used:</strong> <%= project.toolUsed %></p>
+					<button class='buttonShow'><a href="<%= project.github %>" class="btnLink" target="_blank" role="button">Source Code</a></button>
+		  			<br></br>
+			  		<hr>
+					<h4 class="card-text py-2"> Example run: </h4>
+					<div class='text-center'>
+						<img class='img-responsive pt-3' src='<%= project.image %>'>
+					</div>
+			   </div>	
+			   
 
-				<a href='/projects/<%=project._id%>/edit'>Edit</a>
-				<form action='/projects/<%= project._id %>?_method=DELETE' method="POST">
-					<button class='btn btn-primary'>Delete</button>
-				</form>
-			</div>
-		</div>
-	</div>
+				<div class='row justify-content-center'>	
+						<button class='buttonShow'><a class='btnLink' href='/projects/<%=project._id%>/edit'>Edit</a></button>
+						<form action='/projects/<%= project._id %>?_method=DELETE' method="POST">
+							<button class='buttonShow'> Delete</button>
+						</form>
+			    </div>		
+		</div>			
 </div>
+
+  
 
 <% include ../partials/footer %>

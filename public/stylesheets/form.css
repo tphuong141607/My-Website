@@ -1,0 +1,19 @@
+label {
+	color:#215596 ;
+}
+
+.container {
+	text-align: left; 
+}
+
+h1 {
+	color:#215596 ;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.formDiv {
+	background: white;
+	border-radius: 0.5rem;
+	padding: 4rem;
+}
