@@ -4,13 +4,39 @@ var express 	= require('express'),
 	bodyParser  = require('body-parser'),
 	passport 	= require('passport'),
 	LocalStrategy = require('passport-local'),
-	User 		= rename('./models/user),
-	mongoose 	= require('mongoose');
+	Project 	= require('./models/project'),
+	User 		= require('./models/user'),
+	mongoose 	= require('mongoose'); 
+
+//------------------------//
+// Mongoose/Model Config  //
+//------------------------//
+mongoose.connect('mongodb://localhost/myWeb_project', {useNewUrlParser: true , useUnifiedTopology: true}); 
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
+
+//-----------------------//
+// Passport Config       //
+//-----------------------//
+app.use(require('express-session')({
+		secret:'I have the best parents in the world!',
+		resave: false,
+		saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+app.use(function(req, res, next){
+	res.locals.currentUser = req.user;
+	next();
+});
 
 //-----------------------------//
 // REGULAR ROUTES (front-end)  //
@@ -31,45 +57,27 @@ app.get('/contact', function(req, res){
 	res.render('contact');
 });
 
-//------------------------//
-// Mongoose/Model Config  //
-//------------------------//
-mongoose.connect('mongodb://localhost/myWeb_project', {useNewUrlParser: true , useUnifiedTopology: true}); 
-var projectSchema = new mongoose.Schema({
-	title: String,
-	image: String,
-	body: String,
-	toolUsed: String,
-	github: String,
-	dateCreated: {type: Date, default: Date.now}
-});
-
-var Project = mongoose.model('Project', projectSchema);
-
-
-
 //-----------------------------//
 // RESTFUL ROUTES for PROJECTs //
 //-----------------------------//
-
 // INDEX route (show all prrojects)
 app.get('/projects', function(req, res){
-	Project.find({}, function(err, projects){
+	Project.find({}, function(err, allProjects){
 		if(err) {
 			console.log("Error!");
 		} else {
-			res.render('projects/index', {projects:projects});
+			res.render('projects/index', {projects:allProjects, currentUser:req.user});
 		}
 	});	
 });
 
 // NEW route (input form)
-app.get('/projects/new', function(req, res){
+app.get('/projects/new', isLoggedIn, function(req, res){
 	res.render('projects/new');
 });
 
 // CREATE route (add the new project into our db)
-app.post('/projects', function(req, res){
+app.post('/projects', isLoggedIn, function(req, res){
 	// Create project
 	Project.create(req.body.project, function(err, newProject){
 		if(err){
@@ -92,7 +100,7 @@ app.get('/projects/:id', function(req, res){
 });
 
 // EDIT route (input form)
-app.get('/projects/:id/edit', function(req, res){
+app.get('/projects/:id/edit', isLoggedIn, function(req, res){
 	Project.findById(req.params.id, function(err, foundProject){
 		if(err) {
 			res.redirect('/projects');
@@ -103,7 +111,7 @@ app.get('/projects/:id/edit', function(req, res){
 });
 
 // UPDATE route (update the edited input into our db)
-app.put('/projects/:id', function(req, res){
+app.put('/projects/:id', isLoggedIn, function(req, res){
 	Project.findByIdAndUpdate(req.params.id, req.body.project, function(err, updateProject){
 		if(err){
 			res.redirect('/projects');
@@ -114,7 +122,7 @@ app.put('/projects/:id', function(req, res){
 });
 
 // DELETE route (remove data from the db)
-app.delete('/projects/:id', function(req, res){
+app.delete('/projects/:id', isLoggedIn, function(req, res){
 	Project.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.redirect('/projects');
@@ -123,6 +131,66 @@ app.delete('/projects/:id', function(req, res){
 		}
 	});
 });
+
+//--------------//
+// AUTH ROUTES  //
+//--------------//
+
+// ---------- REGISTER
+// Show the register form
+app.get('/register', function(req, res){
+	res.render('register');
+});
+
+// handle sign up logic 
+app.post('/register', function(req, res){
+	if (req.body.verification == 'SteamyBun1407'){
+		var newUser = new User({username: req.body.username});
+		User.register(newUser, req.body.password, function (err, newlyCreatedUser) {
+			if(err) {
+				console.log(err);
+				return res.render('register');
+			}
+			// strategy: local
+			passport.authenticate('local')(req, res, function(){
+				res.redirect('/projects');
+			})
+		});
+	} else {
+		console.log('incorrect verification code');
+		return res.render('register');
+	}
+});
+
+// ---------- LOG-IN
+// Show the login form
+app.get('/login', function(req, res){
+	res.render('login');
+});
+
+// handle login logic 
+// app.post('/route', middleware, callback)
+app.post('/login', passport.authenticate('local', 
+	{
+		successRedirect:'/projects',
+		failureRedirect:'/login',
+	}), function(req, res){
+});
+
+
+// ---------- LOGOUT
+app.get('/logout', function(req, res){
+	req.logout();
+	res.redirect('/projects');
+});
+
+// Middleware function
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect('/login');
+}
 
 
 // Tell Express to listen for requests (start server)

@@ -9,7 +9,7 @@
 			  	  
 			  <div class="card-body">
 			  		<h4><i class="fas fa-glasses py-2"></i> ABOUT <%= project.title %></h4>
-					<p class="card-text"> <%- project.body %></p>
+					<p class="pt-2"> <%- project.body %></p>
 					<p><strong>Technologies, tools, languages used:</strong> <%= project.toolUsed %></p>
 					<button class='buttonShow'><a href="<%= project.github %>" class="btnLink" target="_blank" role="button">Source Code</a></button>
 		  			<br></br>
@@ -22,10 +22,12 @@
 			   
 
 				<div class='row justify-content-center'>	
+					<% if(currentUser){ %>
 						<button class='buttonShow'><a class='btnLink' href='/projects/<%=project._id%>/edit'>Edit</a></button>
 						<form action='/projects/<%= project._id %>?_method=DELETE' method="POST">
-							<button class='buttonShow'> Delete</button>
+							<button class='buttonShow buttonHover'> Delete</button>
 						</form>
+					<% } %>
 			    </div>		
 		</div>			
 </div>

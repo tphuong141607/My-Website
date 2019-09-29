@@ -264,7 +264,45 @@
 	transform: translateX(-50%);
 }
 
+/*------------------------------------*/
+/*   @MEDIA - responsive for mobile   */
+/*------------------------------------*/
 
+@media (max-width: 768px) {
+	.projectContainer{
+		padding-bottom: 5rem;
+	}
+	.word span:nth-child(1) {
+		font-size: 7rem;
+	}
+  .word span {
+	font-size: 4rem;
+	}
+}
+
+@media (max-width: 495px) {
+	.projectContainer{
+		padding-bottom: 4rem;
+	}
+  .word span:nth-child(1) {
+	  font-size: 5rem;
+	}
+  .word span {
+	font-size: 3rem;
+	}
+}
+
+@media (max-width: 330px) {
+	.projectContainer{
+		padding-bottom: 2rem;
+	}
+	.word span:nth-child(1) {
+	  font-size: 4rem;
+	}
+  .word span {
+	font-size: 2rem;
+	}
+}
 
 
 

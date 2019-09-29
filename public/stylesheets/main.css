@@ -38,6 +38,10 @@ body {
   color: #ff9ec9;
 } 
 
+.auth {
+	margin-left:auto; 
+	margin-right:0;
+}
 
 /*-------------------------------------------*/
 /*   Particles animation by VincentGarreau   */
