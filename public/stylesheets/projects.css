@@ -8,6 +8,10 @@
 	padding-bottom: 6rem;
 }
 
+.img-fluid {
+	max-width: 100%;
+	height: 300px;
+}
 
 /*---------------------------*/
 /****   Each project box  ****/

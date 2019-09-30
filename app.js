@@ -11,7 +11,11 @@ var express 	= require('express'),
 //------------------------//
 // Mongoose/Model Config  //
 //------------------------//
-mongoose.connect('mongodb://localhost/myWeb_project', {useNewUrlParser: true , useUnifiedTopology: true}); 
+mongoose.connect('mongodb+srv://msanna1407:Asdasd123@mywebsite-ixjjd.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true , useUnifiedTopology: true}).then(() => {
+	console.log('Connect to DB!');
+}).catch(err => {
+	console.log('ERROR:', err.message);
+}); 
 
 
 app.use(bodyParser.urlencoded({extended: true}));
