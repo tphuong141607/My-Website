@@ -11,7 +11,13 @@ var express 	= require('express'),
 //------------------------//
 // Mongoose/Model Config  //
 //------------------------//
-mongoose.connect('mongodb+srv://msanna1407:Asdasd123@mywebsite-ixjjd.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true , useUnifiedTopology: true}).then(() => {
+// Tell Express to listen for requests (start server)
+
+mongoose.connect('mongodb+srv://msanna1407:Asdasd123@mywebsite-ixjjd.mongodb.net/test?retryWrites=true&w=majority', {
+	useNewUrlParser: true, 
+	useUnifiedTopology: true,
+	useCreateIndex: true
+}).then(() => {
 	console.log('Connect to DB!');
 }).catch(err => {
 	console.log('ERROR:', err.message);
@@ -27,7 +33,7 @@ app.use(methodOverride('_method'));
 // Passport Config       //
 //-----------------------//
 app.use(require('express-session')({
-		secret:'I have the best parents in the world!',
+		secret:'mySecret',
 		resave: false,
 		saveUninitialized: false
 }));
@@ -196,13 +202,11 @@ function isLoggedIn(req, res, next){
 	res.redirect('/login');
 }
 
-
-// Tell Express to listen for requests (start server)
-var port = process.env.PORT || 3000;
-app.listen(port, function () {
-  console.log('myApp Server has started!');
+const port = process.env.PORT || 3000;
+const ip = process.env.IP || "127.0.0.1";
+app.listen(port, function(){
+    console.log("Server has started .... at port "+ port+" ip: "+ip);
 });
-
 
 
 
